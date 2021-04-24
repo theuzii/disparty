@@ -29,7 +29,7 @@ const ACTIVITIES: {
 
 // Create Slash Commands if not present
 slash.commands.all().then((e) => {
-  if (e.size !== 6) {
+  if (e.size !== 5) {
     slash.commands.bulkEdit([
       {
         name: "bilgi",
@@ -63,7 +63,7 @@ slash.commands.all().then((e) => {
 
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
-  const channel = d.option<slash.InteractionChannel>("channel");
+  const channel = d.option<slash.InteractionChannel>("kanal");
   const activity = ACTIVITIES[d.option<string>("etkinlik")];
   if (!channel || !activity) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
