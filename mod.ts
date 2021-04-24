@@ -84,7 +84,7 @@ slash.handle("etkinlik", (d) => {
     })
     .then((inv) => {
       d.reply(
-        `**${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı.[Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
+        `• **${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
