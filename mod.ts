@@ -6,7 +6,7 @@ slash.init({ env: true });
 
 // Create Slash Commands if not present
 slash.commands.all().then((e) => {
-  if (e.size !== 1) {
+  if (e.size !== 2) {
     slash.commands.bulkEdit([
       {
         name: "yardım",
