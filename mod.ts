@@ -95,7 +95,6 @@ slash.handle("etkinlik", (d) => {
 
 slash.handle("bilgi", (d) => {
   d.reply(
-    `• Etkinlik başlatmak için **/etkinlik kanaladı etkinlik adı.** komutunu kullanın.\n` +
     `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
       `• [Web Sitesi Yakında.](<https://github.com/DjDeveloperr/ActivitiesBot>)\n` +
       `• [Destek sunucumuza katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
