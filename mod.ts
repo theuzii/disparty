@@ -84,7 +84,7 @@ slash.handle("etkinlik", (d) => {
     })
     .then((inv) => {
       d.reply(
-        `[ **${activity.name}** etkinliği **${channel.name}** adlı kanalda başlatıldı.](<https://discord.gg/${inv.code}>)`
+        `**${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı.[Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
@@ -95,7 +95,7 @@ slash.handle("etkinlik", (d) => {
 
 slash.handle("bilgi", (d) => {
   d.reply(
-    `• [/etkinlik **Kanal Adı** **Etkinlik Adı**.](<https://github.com/theuzii>)\n` +
+    `• Kullanım şekli : /etkinlik **Kanal Adı** **Etkinlik Adı**.]\n` +
     `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
       `• [Web Sitesi Yakında.](<https://github.com/DjDeveloperr/ActivitiesBot>)\n` +
       `• [Destek sunucumuza katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
