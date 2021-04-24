@@ -68,13 +68,13 @@ slash.handle("etkinlik", (d) => {
   if (!kanal || !etkinlik) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
-  if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
+  if (kanal.type !== slash.ChannelTypes.GUILD_VOICE) {
     return d.reply("Etkinlikler sadece ses kanallarında başlatılabilir.", {
       ephemeral: true,
     });
   }
 
-  slash.client.rest.api.channels[channel.id].invites
+  slash.client.rest.api.channels[kanal.id].invites
     .post({
       max_age: 604800,
       max_uses: 0,
