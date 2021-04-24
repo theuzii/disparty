@@ -29,7 +29,7 @@ const ACTIVITIES: {
 
 // Create Slash Commands if not present
 slash.commands.all().then((e) => {
-  if (e.size !== 5) {
+  if (e.size !== 7) {
     slash.commands.bulkEdit([
       {
         name: "bilgi",
