@@ -61,11 +61,11 @@ slash.commands.all().then((e) => {
   }
 });
 
-slash.handle("activity", (d) => {
+slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
-  const channel = d.option<slash.InteractionChannel>("channel");
-  const activity = ACTIVITIES[d.option<string>("activity")];
-  if (!channel || !activity) {
+  const kanal = d.option<slash.InteractionChannel>("channel");
+  const etkinlik = ACTIVITIES[d.option<string>("etkinlik")];
+  if (!kanal || !etkinlik) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
   if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
@@ -78,13 +78,13 @@ slash.handle("activity", (d) => {
     .post({
       max_age: 604800,
       max_uses: 0,
-      target_application_id: activity.id,
+      target_application_id: etkinlik.id,
       target_type: 2,
       temporary: false,
     })
     .then((inv) => {
       d.reply(
-        `[ **${activity.name}** etkinliği **${channel.name}** adlı kanalda başlatıldı.](<https://discord.gg/${inv.code}>)`
+        `[ **${etkinlik.name}** etkinliği **${kanal.name}** adlı kanalda başlatıldı.](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
@@ -93,8 +93,9 @@ slash.handle("activity", (d) => {
     });
 });
 
-slash.handle("invite", (d) => {
+slash.handle("bilgi", (d) => {
   d.reply(
+    `• Etkinlik başlatmak için **/etkinlik kanaladı etkinlik adı.** komutunu kullanın.\n` +
     `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
       `• [Web Sitesi Yakında.](<https://github.com/DjDeveloperr/ActivitiesBot>)\n` +
       `• [Destek sunucumuza katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
