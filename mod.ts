@@ -1,4 +1,4 @@
-import * as slash from "https://raw.githubusercontent.com/theuzii/bizetrevity/main/mod.ts";
+import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/main/deploy.ts";
 
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
