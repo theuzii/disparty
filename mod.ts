@@ -36,17 +36,17 @@ slash.commands.all().then((e) => {
         description: "Benimle ilgili bilgi al.",
       },
       {
-        name: "etkinlik",
+        name: "activity",
         description: "Sesli bir kanalda etkinlik başlat.",
         options: [
           {
-            name: "kanal",
+            name: "channel",
             type: slash.SlashCommandOptionType.CHANNEL,
             description: "Etkinliğin başlayacağı sesli kanal.",
             required: true,
           },
           {
-            name: "etkinlik",
+            name: "activity",
             type: slash.SlashCommandOptionType.STRING,
             description: "Başlatılacak etkinlik.",
             required: true,
@@ -63,28 +63,28 @@ slash.commands.all().then((e) => {
 
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
-  const kanal = d.option<slash.InteractionChannel>("channel");
-  const etkinlik = ACTIVITIES[d.option<string>("etkinlik")];
-  if (!kanal || !etkinlik) {
+  const channel = d.option<slash.InteractionChannel>("channel");
+  const activity = ACTIVITIES[d.option<string>("etkinlik")];
+  if (!channel || !activity) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
-  if (kanal.type !== slash.ChannelTypes.GUILD_VOICE) {
+  if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
     return d.reply("Etkinlikler sadece ses kanallarında başlatılabilir.", {
       ephemeral: true,
     });
   }
 
-  slash.client.rest.api.channels[kanal.id].invites
+  slash.client.rest.api.channels[channel.id].invites
     .post({
       max_age: 604800,
       max_uses: 0,
-      target_application_id: etkinlik.id,
+      target_application_id: activity.id,
       target_type: 2,
       temporary: false,
     })
     .then((inv) => {
       d.reply(
-        `[ **${etkinlik.name}** etkinliği **${kanal.name}** adlı kanalda başlatıldı.](<https://discord.gg/${inv.code}>)`
+        `[ **${activity.name}** etkinliği **${channel.name}** adlı kanalda başlatıldı.](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
