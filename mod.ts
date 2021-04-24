@@ -29,24 +29,24 @@ const ACTIVITIES: {
 
 // Create Slash Commands if not present
 slash.commands.all().then((e) => {
-  if (e.size !== 2) {
+  if (e.size !== 5) {
     slash.commands.bulkEdit([
       {
         name: "bilgi",
         description: "Benimle ilgili bilgi al.",
       },
       {
-        name: "activity",
+        name: "etkinlik",
         description: "Sesli bir kanalda etkinlik başlat.",
         options: [
           {
-            name: "channel",
+            name: "kanal",
             type: slash.SlashCommandOptionType.CHANNEL,
             description: "Etkinliğin başlayacağı sesli kanal.",
             required: true,
           },
           {
-            name: "activity",
+            name: "etkinlik",
             type: slash.SlashCommandOptionType.STRING,
             description: "Başlatılacak etkinlik.",
             required: true,
