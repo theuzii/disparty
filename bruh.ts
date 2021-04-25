@@ -4,11 +4,10 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 slash.init({ env: true });
 
 slash.handle("bilgi", (d) => {
-  d.reply(
-    `• Kullanım şekli : /etkinlik <**<Kanal Adı>** **<Etkinlik Adı>**\n` +
-    `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
-      `• [Web Sitesi Yakında.](<https://github.com/theuzii>)\n` +
-      `• [Destek sunucumuza katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
+ embed.setTitle("Etkinlik başlatıldı!")
+                    embed.setDescription(`**YouTube Together** etkinliği **${channel.name}** adlı kanalda başlatıldı [Etkinliğe katıl!](https://discord.gg/${invite.code})`),
+                    embed.setFooter(` tarafından istendi.`),
+                    embed.setColor("#7289DA"),
     { ephemeral: true }
   );
 });
