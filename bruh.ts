@@ -12,3 +12,6 @@ slash.handle("invite", (d) => {
     { ephemeral: true }
   );
 });
+
+slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
+slash.client.on("interactionError", console.log);
