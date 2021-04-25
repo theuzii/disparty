@@ -4,12 +4,16 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 slash.init({ env: true });
 
 slash.handle("bilgi", (d) => {
- embed.setTitle("Etkinlik başlatıldı!")
-                    embed.setDescription(`**YouTube Together** etkinliği **${channel.name}** adlı kanalda başlatıldı [Etkinliğe katıl!](https://discord.gg/${invite.code})`),
-                    embed.setFooter(` tarafından istendi.`),
-                    embed.setColor("#7289DA"),
+ async execute(bot, say, interaction, args) {
+		const embed = new MessageEmbed()
+			.setDescription(args[0].value)
+			.setColor("RANDOM")
+			.setTimestamp()
+			.setFooter(bot.user.username);
+		await say(interaction, embed);
     { ephemeral: true }
   );
+},
 });
 
 slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
