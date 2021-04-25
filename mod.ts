@@ -2,8 +2,6 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
-const {MessageEmbed} = require('discord.js');
-const embed = new MessageEmbed();
 const ACTIVITIES: {
   [name: string]: {
     id: string;
@@ -66,6 +64,8 @@ slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("kanal");
   const activity = ACTIVITIES[d.option<string>("etkinlik")];
+  const {MessageEmbed} = require('discord.js');
+  const embed = new MessageEmbed();
   if (!channel || !activity) {
     return d.reply("Invalid interaction.", { ephemeral: true });
   }
