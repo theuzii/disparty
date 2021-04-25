@@ -61,7 +61,7 @@ slash.commands.all().then((e) => {
   }
 });
 
-slash.handle("etkinlik", (d) => {
+slash.handle("activity", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("channel");
   const activity = ACTIVITIES[d.option<string>("activity")];
