@@ -84,13 +84,10 @@ slash.handle("etkinlik", (d) => {
       temporary: false,
     })
     .then((inv) => {
-      embed.setTitle("Etkinlik başlatıldı!")
-                    embed.setDescription(`${activity.name} etkinliği **${channel.name}** adlı kanalda başlatıldı [Etkinliğe katıl!](https://discord.gg/${invite.code})`)
-                    embed.setColor("#7289DA")
-                    command.callback({
-                        embeds: embed
-                    })
-  
+      d.reply(
+        `[Click here to start ${activity.name} in ${channel.name}.](<https://discord.gg/${inv.code}>)`
+      );
+    })
     .catch((e) => {
       console.log("Failed", e);
       d.reply("Failed to start Activity.", { ephemeral: true });
