@@ -61,15 +61,15 @@ slash.commands.all().then((e) => {
   }
 });
 
-slash.handle("etkinlik", (d) => {
+slash.handle("activity", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("channel");
   const activity = ACTIVITIES[d.option<string>("activity")];
   if (!channel || !activity) {
-    return d.reply("Geçersiz kullanım.", { ephemeral: true });
+    return d.reply("Invalid interaction.", { ephemeral: true });
   }
   if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
-    return d.reply("Etkinlikler sadece ses kanallarında başlatılabilir.", {
+    return d.reply("Activities can only be started in Voice Channels.", {
       ephemeral: true,
     });
   }
@@ -84,12 +84,12 @@ slash.handle("etkinlik", (d) => {
     })
     .then((inv) => {
       d.reply(
-        `• **${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
+        `[Click here to start ${activity.name} in ${channel.name}.](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
       console.log("Failed", e);
-      d.reply("Etkinlik başlatılamadı.", { ephemeral: true });
+      d.reply("Failed to start Activity.", { ephemeral: true });
     });
 });
 
