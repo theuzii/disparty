@@ -4,16 +4,11 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 slash.init({ env: true });
 
 slash.handle("bilgi", (d) => {
- async execute(bot, say, interaction, args) {
-		const embed = new MessageEmbed()
-			.setDescription(args[0].value)
-			.setColor("RANDOM")
-			.setTimestamp()
-			.setFooter(bot.user.username);
-		await say(interaction, embed);
+  d.reply(
+    `• [Beni sunucuna ekle.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>),\n` +
+      `• [Destek sunucuma katıl.](<https://discord.gg/y4GbJ4ha3Z>)`
     { ephemeral: true }
   );
-},
 });
 
 slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
