@@ -31,7 +31,7 @@ slash.commands.all().then((e) => {
   if (e.size !== 11) {
     slash.commands.bulkEdit([
       {
-        name: "bilgi",
+        name: "yardım",
         description: "Benimle ilgili bilgi al.",
       },
       {
@@ -85,21 +85,21 @@ slash.handle("etkinlik", (d) => {
     })
     .then((inv) => {
       d.reply(
-        `[Click here to start ${activity.name} in ${channel.name}.](<https://discord.gg/${inv.code}>)`
+        `**${activity.name}** adlı etkinlik **${channel.name}** adlı kanalda başlatıldı.[Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
       console.log("Failed", e);
-      d.reply("Failed to start Activity.", { ephemeral: true });
+      d.reply("Etkinlik başlatılamadı.", { ephemeral: true });
     });
 });
 
-slash.handle("bilgi", (d) => {
+slash.handle("yardım", (d) => {
   d.reply(
     `• Kullanım şekli : /etkinlik <**<Kanal Adı>** **<Etkinlik Adı>**\n` +
     `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
-      `• [Web Sitesi Yakında.](<https://github.com/DjDeveloperr/ActivitiesBot>)\n` +
-      `• [Destek sunucumuza katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
+      `• [Web Sitesi Yakında.](<https://github.com/theuzii/>)\n` +
+      `• [Destek sunucuma katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
     { ephemeral: true }
   );
 });
