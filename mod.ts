@@ -3,9 +3,6 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
 const embed = new MessageEmbed();
-const {
-    MessageEmbed
-} = require('discord.js');
 const ACTIVITIES: {
   [name: string]: {
     id: string;
