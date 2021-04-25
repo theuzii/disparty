@@ -2,7 +2,7 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
-const embed = new MessageEmbed();
+
 const ACTIVITIES: {
   [name: string]: {
     id: string;
@@ -63,6 +63,7 @@ slash.commands.all().then((e) => {
 
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
+  const embed = new MessageEmbed();
   const channel = d.option<slash.InteractionChannel>("kanal");
   const activity = ACTIVITIES[d.option<string>("etkinlik")];
   if (!channel || !activity) {
