@@ -64,8 +64,8 @@ slash.commands.all().then((e) => {
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("channel");
-  const activity = ACTIVITIES[d.option<string>("activity")];
-  if (!channel || !activity) {
+  const etkinlik = ACTIVITIES[d.option<string>("etkinlik")];
+  if (!channel || !etkinlik) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
   if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
@@ -78,13 +78,13 @@ slash.handle("etkinlik", (d) => {
     .post({
       max_age: 604800,
       max_uses: 0,
-      target_application_id: activity.id,
+      target_application_id: etkinlik.id,
       target_type: 2,
       temporary: false,
     })
     .then((inv) => {
       d.reply(
-        `• **${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
+        `• **${etkinlik.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
