@@ -90,7 +90,7 @@ slash.handle("etkinlik", (d) => {
                     embed.setColor("#7289DA")
                     command.callback({
                         embeds: embed
-      );
+      ));
     })
     .catch((e) => {
       console.log("Failed", e);
