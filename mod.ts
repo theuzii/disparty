@@ -103,5 +103,5 @@ slash.handle("bilgi", (d) => {
   );
 });
 
-slash.handle("*", (d) => d.reply("Bilinmeyen Komut?", { ephemeral: true }));
+slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
 slash.client.on("interactionError", console.log);
