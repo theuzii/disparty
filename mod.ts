@@ -64,7 +64,7 @@ slash.commands.all().then((e) => {
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("channel");
-  const activity = ACTIVITIES[d.option<string>("activity")];
+  const activity = ACTIVITIES[d.option<string>("etkinlik")];
   if (!channel || !activity) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
