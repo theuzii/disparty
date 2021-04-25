@@ -2,7 +2,10 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
-
+const embed = new MessageEmbed();
+const {
+    MessageEmbed
+} = require('discord.js');
 const ACTIVITIES: {
   [name: string]: {
     id: string;
@@ -83,8 +86,12 @@ slash.handle("etkinlik", (d) => {
       temporary: false,
     })
     .then((inv) => {
-      d.reply(
-        `[Click here to start ${activity.name} in ${channel.name}.](<https://discord.gg/${inv.code}>)`
+      embed.setTitle("Etkinlik başlatıldı!")
+                    embed.setDescription(`${activity.name} etkinliği **${channel.name}** adlı kanalda başlatıldı [Etkinliğe katıl!](https://discord.gg/${invite.code})`)
+                    embed.setFooter(`${command.author.username + "#" + command.author.discriminator} tarafından istendi.`)
+                    embed.setColor("#7289DA")
+                    command.callback({
+                        embeds: embed
       );
     })
     .catch((e) => {
