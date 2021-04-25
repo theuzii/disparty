@@ -90,8 +90,9 @@ slash.handle("etkinlik", (d) => {
                     embed.setColor("#7289DA")
                     command.callback({
                         embeds: embed
-      ));
-    })
+      
+                    })
+  
     .catch((e) => {
       console.log("Failed", e);
       d.reply("Failed to start Activity.", { ephemeral: true });
@@ -107,6 +108,6 @@ slash.handle("bilgi", (d) => {
     { ephemeral: true }
   );
 });
-
+})
 slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
 slash.client.on("interactionError", console.log);
