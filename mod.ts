@@ -101,8 +101,7 @@ slash.handle("yardım", (d) => {
       `• [Web Sitesi Yakında.](<https://github.com/theuzii/>)\n` +
       `• [Destek sunucuma katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
     { ephemeral: true }
-  );
+   );
 });
-})
 slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
 slash.client.on("interactionError", console.log);
