@@ -64,6 +64,7 @@ slash.commands.all().then((e) => {
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
   const embed = new MessageEmbed();
+const {MessageEmbed} = require('discord.js');
   const channel = d.option<slash.InteractionChannel>("kanal");
   const activity = ACTIVITIES[d.option<string>("etkinlik")];
   if (!channel || !activity) {
