@@ -3,7 +3,7 @@ import * as slash from "https://raw.githubusercontent.com/harmonyland/harmony/ma
 // Pick up TOKEN and PUBLIC_KEY from ENV.
 slash.init({ env: true });
 
-const ACTIVITIES: {
+const ETKINLIKLER: {
   [name: string]: {
     id: string;
     name: string;
@@ -29,7 +29,7 @@ const ACTIVITIES: {
 
 // Create Slash Commands if not present
 slash.commands.all().then((e) => {
-  if (e.size !== 9) {
+  if (e.size !== 11) {
     slash.commands.bulkEdit([
       {
         name: "bilgi",
@@ -50,7 +50,7 @@ slash.commands.all().then((e) => {
             type: slash.SlashCommandOptionType.STRING,
             description: "Başlatılacak etkinlik.",
             required: true,
-            choices: Object.entries(ACTIVITIES).map((e) => ({
+            choices: Object.entries(ETKINLIKLER).map((e) => ({
               name: e[1].name,
               value: e[0],
             })),
@@ -64,8 +64,8 @@ slash.commands.all().then((e) => {
 slash.handle("etkinlik", (d) => {
   if (!d.guild) return;
   const channel = d.option<slash.InteractionChannel>("channel");
-  const activity = ACTIVITIES[d.option<string>("etkinlik")];
-  if (!channel || !activity) {
+  const etkinlik = ETKINLIKLER[d.option<string>("etkinlik")];
+  if (!channel || !etkinlik) {
     return d.reply("Geçersiz kullanım.", { ephemeral: true });
   }
   if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
@@ -78,13 +78,13 @@ slash.handle("etkinlik", (d) => {
     .post({
       max_age: 604800,
       max_uses: 0,
-      target_application_id: activity.id,
+      target_application_id: etkinlik.id,
       target_type: 2,
       temporary: false,
     })
     .then((inv) => {
       d.reply(
-        `• **${activity.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
+        `• **${etkinlik.name}**  etkinliği  **${channel.name}**  adlı kanalda başlatıldı. [Katılmak için tıkla](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
