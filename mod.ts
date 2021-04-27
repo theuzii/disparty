@@ -65,10 +65,10 @@ slash.handle("etkinlik", (d) => {
   const channel = d.option<slash.InteractionChannel>("kanal");
   const activity = ACTIVITIES[d.option<string>("etkinlik")];
   if (!channel || !activity) {
-    return d.reply("Invalid interaction.", { ephemeral: true });
+    return d.reply("Geçersiz komut.", { ephemeral: true });
   }
   if (channel.type !== slash.ChannelTypes.GUILD_VOICE) {
-    return d.reply("Activities can only be started in Voice Channels.", {
+    return d.reply("Etkinlikler sadece sesli kanallarda başlatılabilir.", {
       ephemeral: true,
     });
   }
@@ -94,12 +94,12 @@ slash.handle("etkinlik", (d) => {
 
 slash.handle("yardım", (d) => {
   d.reply(
-    `• Kullanım şekli : /etkinlik <**<Kanal Adı>** **<Etkinlik Adı>**\n` +
+    `• Kullanım şekli : /etkinlik **<Kanal Adı>** **<Etkinlik Adı>**\n` +
     `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
       `• [Web Sitesi Yakında.](<https://github.com/theuzii/>)\n` +
       `• [Destek sunucuma katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
     { ephemeral: true }
    );
 });
-slash.handle("*", (d) => d.reply("Unhandled Command", { ephemeral: true }));
+slash.handle("*", (d) => d.reply("Bilinmeyen Komut", { ephemeral: true }));
 slash.client.on("interactionError", console.log);
