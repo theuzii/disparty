@@ -135,9 +135,9 @@ slash.handle("etkinlik", (d) => {
 slash.handle("yardım", (d) => {
   return d.reply(
     `• Kullanım şekli : /etkinlik **<Kanal Adı>** **<Etkinlik Adı>**\n` +
-    `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=758821820924952576&permissions=1&scope=applications.commands%20bot>)\n` +
+    `• [Botu kendi sunucuna davet et.](<https://discord.com/api/oauth2/authorize?client_id=900774214645207102&permissions=1&scope=applications.commands%20bot>)\n` +
       `• [Web Sitesi Yakında.](<https://github.com/theuzii/>)\n` +
-      `• [Destek sunucuma katıl.](<https://discord.gg/y4GbJ4ha3Z>)`,
+      `• [Destek sunucuma katıl.](<https://discord.gg/turkiye>)`,
     { ephemeral: true }
   );
 });
