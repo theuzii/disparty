@@ -49,7 +49,7 @@ const ACTIVITIES: {
 
 const commands = [
    {
-     name: "davet",
+     name: "yardım",
      description: "Dislash botunu kendi sunucuna ekle.",
    },
    {
