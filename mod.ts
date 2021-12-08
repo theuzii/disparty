@@ -50,7 +50,7 @@ const ACTIVITIES: {
 const commands = [
    {
      name: "yardım",
-     description: "Dislash botunu kendi sunucuna ekle.",
+     description: "Disparty botu hakkında yardım al.",
    },
    {
      name: "etkinlik",
@@ -123,7 +123,7 @@ slash.handle("etkinlik", (d) => {
     })
     .then((inv) => {
       return d.reply(
-        `[Click here to start ${activity.name} in ${channel.name}.](<https://discord.gg/${inv.code}>)`
+        `**${activity.name}** adlı etkinlik **${channel.name}** adlı kanalda başlatıldı. [Katıl](<https://discord.gg/${inv.code}>)`
       );
     })
     .catch((e) => {
